@@ -24,8 +24,19 @@ package com.strategicgains.hyperexpress.domain;
  */
 public class Link
 {
+	/**
+	 * The URL to operate on the related object.
+	 */
 	private String href;
+
+	/**
+	 * The relationship from the referencing object to the referenced object (e.g. rel=self).
+	 */
 	private String rel;
+
+	/**
+	 * The type of the referred-to object.
+	 */
 	private String type;
 	
 	public Link(String rel, String href)
@@ -39,6 +50,16 @@ public class Link
 		this.href = href;
 		this.rel = rel;
 		this.type = type;
+	}
+	
+	/**
+	 * Copy constructor to facilitate immutability in Link domain.
+	 * 
+	 * @param that
+	 */
+	public Link(Link that)
+	{
+		this(that.rel, that.href, that.type);
 	}
 
 	public String getHref()

@@ -23,7 +23,7 @@ import java.util.Map;
 import com.strategicgains.hyperexpress.domain.Link;
 
 /**
- * Non-instantiable class with foreign methods to create and manipulate XLink instances.
+ * Non-instantiable class with foreign methods to create and manipulate hypermedia Link instances.
  * 
  * @author toddf
  * @since July 29, 2010
@@ -39,35 +39,28 @@ public abstract class LinkUtils
 	
 
 	/**
-	 * Creates a List of XLink instances where the resulting path is the passed-in urlPath suffixed with
+	 * Creates a List of Link instances where the resulting path is the passed-in urlPath suffixed with
 	 * one of the ids.
 	 *  
-	 * @param ids a Collection of identifiers to create XLink instances for.
-	 * @param rel the XLink relationship from the referring object to the referred object (e.g. "self" or "related"). May be null.
+	 * @param ids a Collection of identifiers to create Link instances for.
+	 * @param rel the Link relationship from the referring object to the referred object (e.g. "self" or "related"). May be null.
+	 * @param type the type of the referred object.
 	 * @param paramName the URL parameter (e.g. {personId}) that these identifiers represent.
-	 * @param urlPath the URL that will retrieve individual ids.  There should be a parameter in it that matches the paramName, above.
-	 * @param xlinkFactory a caller-provided class that creates alternate XLink forms.
+	 * @param urlPattern the URL to operate on the related object (e.g. READ).  There should be a parameter in it that matches the paramName, above.
 	 * @param nameValuePairs is a sequence of name/value pairs, where the name matches parameters in urlPath and the value is what gets substituted.
-	 * @return a List of XLink instances.
+	 * @return a List of Link instances.
 	 */
-	public static List<Link> asLinks(Collection<String> ids, String rel, String paramName, String urlPath, String... nameValuePairs)
+	public static List<Link> asLinks(Collection<String> ids, String rel, String type, String paramName, String urlPattern, String... nameValuePairs)
 	{
-		Map<String, String> parameters = MapStringFormat.toMap(nameValuePairs);
 		List<Link> results = new ArrayList<Link>(ids.size());
+		Map<String, String> parameters = MapStringFormat.toMap(nameValuePairs);
 
 		for (String id : ids)
 		{
 			parameters.put(paramName, id);
-			results.add(new Link(rel, formatter.format(urlPath, parameters)));
+			results.add(new Link(rel, formatter.format(urlPattern, parameters), type));
 		}
 
 		return results;
-	}
-	
-	public static String asLocationUrl(String id, String urlIdParam, String urlPath, String... nameValuePairs)
-	{
-		Map<String, String> parameters = MapStringFormat.toMap(nameValuePairs);
-		parameters.put(urlIdParam, id);
-		return formatter.format(urlPath, parameters);
 	}
 }
