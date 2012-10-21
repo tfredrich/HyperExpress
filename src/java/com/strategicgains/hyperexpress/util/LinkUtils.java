@@ -63,4 +63,31 @@ public abstract class LinkUtils
 
 		return results;
 	}
+
+	/**
+	 * Convenience method to format a URL pattern into a string, substituting the names for
+	 * values in the givent nameValuePairs list.
+	 * 
+	 * @param urlPattern a string containing parameters (e.g. /orders/{orderId})
+	 * @param nameValuePairs a list of parameter names and associated values (e.g. "orderId", "1234")
+	 * @return a formatted URL (e.g. /orders/1234)
+	 */
+	public static String formatUrl(String urlPattern, String... nameValuePairs)
+	{
+		return formatter.format(urlPattern, nameValuePairs);
+	}
+
+
+	/**
+	 * Convenience method to format a URL pattern into a string, substituting the names for
+	 * values in the givent nameValuePairs list.
+	 * 
+	 * @param urlPattern a string containing parameters (e.g. /orders/{orderId})
+	 * @param nameValuePairs a list of parameter names and associated values (e.g. "orderId", "1234")
+	 * @return a formatted URL (e.g. /orders/1234)
+	 */
+	public static String formatUrl(String urlPattern, Map<String, String> nameValuePairs)
+	{
+		return formatter.format(urlPattern, nameValuePairs);
+	}
 }
