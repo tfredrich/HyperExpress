@@ -60,6 +60,7 @@ public class Link
 		super();
 		this.href = href;
 		this.rel = rel;
+		this.title = title;
 		this.type = type;
 	}
 	
