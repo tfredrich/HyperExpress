@@ -20,5 +20,6 @@ Additionally, there are a couple of helper classes to assist in creating URLs an
 
 * MapStringFormat - which will substitute names in a string with provided values (such as an URL).
 * LinkUtils - which will perform operations such as replacing create a Collection of Link instances from a list of IDs and an URL, using the substitution capabilities of MapStringFormat.
+* RelTypes - contains constants for REST-related standard Iana.org link-relation types.
 
 Interested in other functionality?  Drop me a line... let's talk!
