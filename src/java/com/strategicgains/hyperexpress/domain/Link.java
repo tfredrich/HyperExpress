@@ -31,6 +31,7 @@ public class Link
 
 	/**
 	 * The relationship from the referencing object to the referenced object (e.g. rel=self).
+	 * @see http://www.iana.org/assignments/link-relations/link-relations.xml
 	 */
 	private String rel;
 
@@ -39,12 +40,22 @@ public class Link
 	 */
 	private String type;
 	
+	/**
+	 * An optional title for the link.
+	 */
+	private String title;
+	
 	public Link(String rel, String href)
 	{
 		this(rel, href, null);
 	}
 
-	public Link(String rel, String href, String type)
+	public Link(String rel, String href, String title)
+	{
+		this(rel, href, title, null);
+	}
+
+	public Link(String rel, String href, String title, String type)
 	{
 		super();
 		this.href = href;
@@ -59,7 +70,7 @@ public class Link
 	 */
 	public Link(Link that)
 	{
-		this(that.rel, that.href, that.type);
+		this(that.rel, that.href, that.title, that.type);
 	}
 
 	public String getHref()
@@ -80,6 +91,16 @@ public class Link
 	public void setRel(String rel)
 	{
 		this.rel = rel;
+	}
+
+	public String getTitle()
+	{
+		return title;
+	}
+
+	public void setTitle(String title)
+	{
+		this.title = title;
 	}
 
 	public String getType()

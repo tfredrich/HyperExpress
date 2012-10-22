@@ -33,7 +33,7 @@ import com.strategicgains.hyperexpress.domain.Link;
 public class LinkUtilsTest
 {
 	@Test
-	public void shouldCreateXLinks()
+	public void shouldCreateLinks()
 	{
 		List<String> ids = Arrays.asList("one", "two", "three");
 		List<Link> links = LinkUtils.asLinks(ids, "self", "someType", "getId", "/strings/{getId}", (String[]) null);
@@ -53,7 +53,7 @@ public class LinkUtilsTest
 	}
 
 	@Test
-	public void shouldCreateXLinksUsingPairs()
+	public void shouldCreateLinksUsingPairs()
 	{
 		List<String> ids = Arrays.asList("one", "two", "three");
 		List<Link> links = LinkUtils.asLinks(ids, "related", "anotherType", "getId", "/{prefix}/{node}/{getId}", "prefix", "strings", "node", "simple");

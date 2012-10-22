@@ -58,7 +58,7 @@ public abstract class LinkUtils
 		for (String id : ids)
 		{
 			parameters.put(paramName, id);
-			results.add(new Link(rel, formatter.format(urlPattern, parameters), type));
+			results.add(new Link(rel, formatter.format(urlPattern, parameters), null, type));
 		}
 
 		return results;
