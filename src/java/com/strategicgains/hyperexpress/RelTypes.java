@@ -23,8 +23,10 @@ package com.strategicgains.hyperexpress;
  * @since Oct 22, 2012
  * @see http://www.iana.org/assignments/link-relations/link-relations.xml
  */
-public final class RelTypes
+public abstract class RelTypes
 {
+	// SECTION: CONSTANTS
+
 	/**
 	 * Refers to a substitute for this context.
 	 * @see http://www.w3.org/TR/html5/links.html#link-type-alternate
@@ -330,6 +332,9 @@ public final class RelTypes
 	 * @see http://www.iana.org/go/rfc5829
 	 */
 	public static final String WORKING_COPY = "working-copy";
+
+
+	// SECTION: CONSTRUCTORS - PRIVATE
 
 	/**
 	 * Points to the versioned resource from which this working copy was obtained.
