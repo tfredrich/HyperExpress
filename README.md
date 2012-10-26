@@ -1,7 +1,7 @@
 HyperExpress
 ============
 
-Offers a simple way to add hypermedia links to your domain models before serializing them to clients.
+Offers a simple way to add hypermedia links to your domain models or DTOs before serializing them to clients.
 
 The main hypermedia link class is *Link*, which supports 'rel', 'href' and 'type' properties, where:
 
